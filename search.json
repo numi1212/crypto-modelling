@@ -1,0 +1,30 @@
+[
+  {
+    "objectID": "trends.html",
+    "href": "trends.html",
+    "title": "Bitcoin Price Trends",
+    "section": "",
+    "text": "Bitcoin has experienced multiple price booms and crashes. In this section, we explore major upward and downward trends using rolling averages and volatility plots.\n\nRolling Average of Closing Price"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Bitcoin Price Trends",
+    "section": "",
+    "text": "The price of Bitcoin has changed dramatically over the past decade. The data comes from Kaggle and contains daily price and volume records for Bitcoin from 2014 onward. I cleaned the dataset by standardizing column names, converting the date field, and removing unused columns like dividends and stock splits. The two main variables are close, which measures the final trading price each day in USD, and volume, which represents the daily total value traded. Bitcoin’s price has gone from under $500 to over $100,000, reflecting one of the most volatile financial journeys in recent history.\n\n\n\n\n\n\n\n\n\n\n\nBitcoin, the first and most dominant cryptocurrency, has experienced a dramatic journey since 2014. This project explores its historical price data to uncover trends, spikes, and cycles in its market behavior. With clear visualizations, we highlight key insights from nearly a decade of trading data, offering a foundation for deeper financial analysis or future forecasting models. Bitcoin’s price has gone from under $500 to over $100,000, reflecting one of the most volatile financial journeys in recent history\n\n\n\n\n\n\n\n\n\n\n\nThis plot shows how Bitcoin’s trading volume has changed over time. It reflects the total USD value traded each day, helping to identify periods of high and low market activity. The line graph makes it easy to spot spikes and patterns.High volume spikes often signal strong investor interest or reactions to news. This plot helps us understand when Bitcoin saw the most trading and can hint at important market events or shifts in sentiment.\n\n\n\n\n\n\n\n\n\n\n\nThis plot illustrates the daily returns of Bitcoin, showing the percentage change in closing price from one day to the next. It reveals how volatile Bitcoin is over time.Sharp spikes up or down indicate big gains or losses in a single day. This view is useful for spotting risky periods and understanding how Bitcoin’s value fluctuates day-to-day."
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "My name is Muhammad Numan. I graduated with an MPhil in Mathematics from Abdul Wali Khan University Mardan, Pakistan. You can view my GitHub profile or contact me via email at mnumankhan033@gmail.com.\nThis project analyzes historical price trends in Bitcoin using a Kaggle dataset. The complete code, analysis, and visualizations are available in the GitHub repository.\nThis project was created as part of Kane’s Data Science Bootcamp."
+  },
+  {
+    "objectID": "sources.html",
+    "href": "sources.html",
+    "title": "Sources",
+    "section": "",
+    "text": "The dataset for this project was obtained from Kaggle, which contains historical daily price data for the top 100 cryptocurrencies. Specifically, I used the file bitcoin.csv, which provides Bitcoin’s open, high, low, close prices, trading volume, and other related fields from 2014 onward.\nTo prepare the dataset for analysis, I cleaned the column names for consistency, converted the date column to proper Date format using lubridate, and removed unnecessary fields such as dividends and stock splits, which are not applicable to cryptocurrencies. The dataset also contained an index column that was dropped during cleaning.\nNo observations were removed during preprocessing. The dataset appears to be complete, with daily data points for nearly 10 years, offering a solid foundation for time series analysis and visualization."
+  }
+]
