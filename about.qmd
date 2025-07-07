@@ -1,5 +1,10 @@
 ---
 title: "About"
+format: html
 ---
 
-About this site
+My name is **Muhammad Numan**. I graduated with an MPhil in Mathematics from *Abdul Wali Khan University Mardan, Pakistan*. You can view my [GitHub profile](https://github.com/numi1212) or contact me via email at mnumankhan033@gmail.com.
+
+This project analyzes historical price trends in Bitcoin using a Kaggle dataset. The complete code, analysis, and visualizations are available in the [GitHub repository](https://github.com/numi1212/crypto-modelling).
+
+This project was created as part of [Kane’s Data Science Bootcamp](https://bootcamp.davidkane.info/).

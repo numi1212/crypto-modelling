@@ -1,0 +1,10 @@
+---
+title: "Sources"
+format: html
+---
+
+The dataset for this project was obtained from [Kaggle](https://www.kaggle.com/datasets/anukaggle81/top-100-crypto-currency-historical-dataset), which contains historical daily price data for the top 100 cryptocurrencies. Specifically, I used the file `bitcoin.csv`, which provides Bitcoin’s open, high, low, close prices, trading volume, and other related fields from 2014 onward.
+
+To prepare the dataset for analysis, I cleaned the column names for consistency, converted the date column to proper `Date` format using `lubridate`, and removed unnecessary fields such as dividends and stock splits, which are not applicable to cryptocurrencies. The dataset also contained an index column that was dropped during cleaning.
+
+No observations were removed during preprocessing. The dataset appears to be complete, with daily data points for nearly 10 years, offering a solid foundation for time series analysis and visualization.

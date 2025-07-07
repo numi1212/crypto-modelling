@@ -1,0 +1,47 @@
+---
+title: "Bitcoin Price Trends"
+format: html
+---
+
+Bitcoin has experienced multiple price booms and crashes. In this section, we explore major upward and downward trends using rolling averages and volatility plots.
+
+### Rolling Average of Closing Price
+```{r}
+#| warning: false
+#| message: false
+#| echo: false
+#| fig-align: center
+#| fig-attr: {.zoomable}
+
+library(tidyverse)
+library(zoo)
+library(lubridate)
+
+crypto_data <- read_csv("D:/data analytics/Data Science/Project data csv/Bitcoin.csv")
+
+# Clean and prepare the data
+crypto_data <- crypto_data %>%
+  rename(
+    date = Date,
+    close = Close
+  ) %>%
+  select(-Dividends, -`Stock Splits`, -`...1`) %>%  # Drop unnecessary columns
+  mutate(
+    date = ymd(date),
+    close = as.numeric(close)
+  ) %>%
+  arrange(date) %>%
+  mutate(
+    close_7day = zoo::rollmean(close, k = 7, fill = NA),
+    close_30day = zoo::rollmean(close, k = 30, fill = NA)
+  )
+
+# Plot moving averages
+ggplot(filter(crypto_data, !is.na(close_30day)), aes(x = date)) +
+  geom_line(aes(y = close), color = "gray", alpha = 0.5) +
+  geom_line(aes(y = close_7day), color = "blue") +
+  geom_line(aes(y = close_30day), color = "red") +
+  labs(title = "Bitcoin Closing Price with 7-Day and 30-Day Moving Averages",
+       x = "Date", y = "Price (USD)") +
+  theme_minimal()
+```

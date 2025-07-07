@@ -2,12 +2,17 @@ project:
   type: website
 
 website:
-  title: "crypto modelling"
+  title: "crypto trends"
   navbar:
     left:
       - href: index.qmd
         text: Home
-      - about.qmd
+      - href: sources.qmd
+        text: Sources
+      - href: trends.qmd
+        text: Trends
+      - href: about.qmd
+        text: About
 
 format:
   html:

@@ -1,28 +1,51 @@
 ---
-title: "Crypto-modelling: A Deep Dive into Bitcoin"
-format: html
+title: "Bitcoin Price Trends"
+author: "Muhammad Numan"
+format:
+  html:
+    theme: cosmo
+    toc: false
+    code-fold: false
+    echo: false
+    warning: false
+    message: false
 ---
 
+<div style="text-align: justify">
+The price of Bitcoin has changed dramatically over the past decade.
+The data comes from Kaggle and contains daily price and volume records for Bitcoin from 2014 onward. I cleaned the dataset by standardizing column names, converting the date field, and removing unused columns like dividends and stock splits. The two main variables are close, which measures the final trading price each day in USD, and volume, which represents the daily total value traded.
+Bitcoin’s price has gone from under $500 to over $100,000, reflecting one of the most volatile financial journeys in recent history.
+</div>
+
 ```{r}
+library(readr)
 crypto_data <- read_csv("D:/data analytics/Data Science/Project data csv/Bitcoin.csv")  # Change path!
 
 ```
 
 ```{r}
+#| fig-align: center
+#| fig-attr: {.zoomable}
+
 library(tidyverse)
 library(lubridate)
 
+# Load the data and clean names manually
+crypto_data <- read_csv("data/bitcoin.csv")
 
-# Clean column names and remove unnecessary columns
+# Rename columns manually (as an alternative to clean_names())
+names(crypto_data) <- names(crypto_data) %>%
+  tolower() %>%
+  str_replace_all(" ", "_") %>%
+  str_replace_all("[^a-z0-9_]", "")
+
+# Continue with cleaning and plotting
 crypto_data <- crypto_data %>%
-  clean_names() %>%                   # converts Date → date, Close → close etc.
-  select(-x1, -dividends, -stock_splits) %>%  # drop useless columns
-  mutate(date = ymd(date))           # ensure date column is proper Date class
+  select(-any_of(c("x1", "...1", "dividends", "stock_splits"))) %>%
+  mutate(date = ymd(date))
 
-```
+# Plot: Bitcoin Closing Price Over Time
 
-
-```{r}
 ggplot(crypto_data, aes(x = date, y = close)) +
   geom_line(color = "steelblue") +
   labs(
@@ -33,6 +56,10 @@ ggplot(crypto_data, aes(x = date, y = close)) +
   theme_minimal()
 
 ```
+
+<div style="text-align: justify">
+Bitcoin, the first and most dominant cryptocurrency, has experienced a dramatic journey since 2014. This project explores its historical price data to uncover trends, spikes, and cycles in its market behavior. With clear visualizations, we highlight key insights from nearly a decade of trading data, offering a foundation for deeper financial analysis or future forecasting models. Bitcoin’s price has gone from under $500 to over $100,000, reflecting one of the most volatile financial journeys in recent history
+</div>
 
 ```{r}
 ggplot(crypto_data, aes(x = date, y = volume)) +
@@ -46,6 +73,9 @@ ggplot(crypto_data, aes(x = date, y = volume)) +
 
 ```
 
+<div style="text-align: justify">
+This plot shows how Bitcoin's trading volume has changed over time. It reflects the total USD value traded each day, helping to identify periods of high and low market activity. The line graph makes it easy to spot spikes and patterns.High volume spikes often signal strong investor interest or reactions to news. This plot helps us understand when Bitcoin saw the most trading and can hint at important market events or shifts in sentiment.
+</div>
 
 ```{r}
 crypto_data <- crypto_data %>%
@@ -62,3 +92,7 @@ ggplot(crypto_data, aes(x = date, y = daily_return)) +
   theme_minimal()
 
 ```
+
+<div style="text-align: justify">
+This plot illustrates the daily returns of Bitcoin, showing the percentage change in closing price from one day to the next. It reveals how volatile Bitcoin is over time.Sharp spikes up or down indicate big gains or losses in a single day. This view is useful for spotting risky periods and understanding how Bitcoin's value fluctuates day-to-day.
+</div>
