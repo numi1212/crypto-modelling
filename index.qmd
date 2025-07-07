@@ -1,0 +1,64 @@
+---
+title: "Crypto-modelling: A Deep Dive into Bitcoin"
+format: html
+---
+
+```{r}
+crypto_data <- read_csv("D:/data analytics/Data Science/Project data csv/Bitcoin.csv")  # Change path!
+
+```
+
+```{r}
+library(tidyverse)
+library(lubridate)
+
+
+# Clean column names and remove unnecessary columns
+crypto_data <- crypto_data %>%
+  clean_names() %>%                   # converts Date → date, Close → close etc.
+  select(-x1, -dividends, -stock_splits) %>%  # drop useless columns
+  mutate(date = ymd(date))           # ensure date column is proper Date class
+
+```
+
+
+```{r}
+ggplot(crypto_data, aes(x = date, y = close)) +
+  geom_line(color = "steelblue") +
+  labs(
+    title = "Bitcoin Closing Price Over Time",
+    x = "Date",
+    y = "Price (USD)"
+  ) +
+  theme_minimal()
+
+```
+
+```{r}
+ggplot(crypto_data, aes(x = date, y = volume)) +
+  geom_line(color = "darkorange") +
+  labs(
+    title = "Bitcoin Trading Volume Over Time",
+    x = "Date",
+    y = "Volume (USD)"
+  ) +
+  theme_minimal()
+
+```
+
+
+```{r}
+crypto_data <- crypto_data %>%
+  arrange(date) %>%
+  mutate(daily_return = (close - lag(close)) / lag(close))
+
+ggplot(crypto_data, aes(x = date, y = daily_return)) +
+  geom_line(color = "purple") +
+  labs(
+    title = "Bitcoin Daily Returns Over Time",
+    x = "Date",
+    y = "Daily Return"
+  ) +
+  theme_minimal()
+
+```
